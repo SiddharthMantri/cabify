@@ -5,15 +5,17 @@ import Product from '../product';
 const ProductList = props => {
     return (
         <Fragment>
-            <ul class="products-list tableHead">
-                <li class="products-list-title row">
-                    <div class="col-product">Product details</div>
-                    <div class="col-quantity">Quantity</div>
-                    <div class="col-price">Price</div>
-                    <div class="col-total">Total</div>
+            <ul className="products-list tableHead">
+                <li className="products-list-title row">
+                    <div className="col-product">Product details</div>
+                    <div className="col-quantity">Quantity</div>
+                    <div className="col-price">Price</div>
+                    <div className="col-total">Total</div>
                 </li>
             </ul>
-            <Product />
+            <ul className="products-list">
+                <Product />
+            </ul>
         </Fragment>
     )
 }
