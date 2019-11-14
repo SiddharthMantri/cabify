@@ -3,15 +3,15 @@ import React from 'react';
 const Summary = props => {
     return (
         <>
-            <aside class="summary">
-                <h1 class="main">Order Summary</h1>
-                <ul class="summary-items wrapper border">
+            <aside className="summary">
+                <h1 className="main">Order Summary</h1>
+                <ul className="summary-items wrapper border">
                     <li>
-                        <span class="summary-items-number">11 Items</span>
-                        <span class="summary-items-price">120<span class="currency">€</span></span>
+                        <span className="summary-items-number">11 Items</span>
+                        <span className="summary-items-price">120<span className="currency">€</span></span>
                     </li>
                 </ul>
-                <div class="summary-discounts wrapper-half border">
+                <div className="summary-discounts wrapper-half border">
                     <h2>Discounts</h2>
                     <ul>
                         <li><span>2x1 Mug offer</span><span>-10€</span></li>
@@ -19,11 +19,11 @@ const Summary = props => {
                         <li><span>Promo code</span><span>0€</span></li>
                     </ul>
                 </div>
-                <div class="summary-total wrapper">
+                <div className="summary-total wrapper">
                     <ul>
                         <li>
-                            <span class="summary-total-cost">Total cost</span>
-                            <span class="summary-total-price">107€</span>
+                            <span className="summary-total-cost">Total cost</span>
+                            <span className="summary-total-price">107€</span>
                         </li>
                     </ul>
                     <button type="submit">Checkout</button>
