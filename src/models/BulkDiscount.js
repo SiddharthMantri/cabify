@@ -11,15 +11,19 @@ class BulkDiscount {
         return product.price;
     }
 
-    applyDiscount(cart = []) {
-        let clone = [...cart];
-        let productsToCheck = clone.filter(p => p.code === this.code);
-        if (productsToCheck.length >= this.quantity) {
-            clone.forEach(p => {
-                if (p.code === this.code) {
-                    p.price = this.getOriginalProductPrice(p.code) - this.discount;
-                }
-            });
+    applyDiscount(cart = {}, appliedRules = {}) {
+        let clone = {...cart};
+        let productsToCheck = clone[this.code];
+
+        if (productsToCheck && productsToCheck.qty >= this.quantity) {
+            let discountedAmount = (productsToCheck.qty * this.discount);
+            let originalPrice = (productsToCheck.product.price * productsToCheck.qty);
+            let discount = originalPrice - discountedAmount;
+            clone[this.code].discounted = discount;
+            clone[this.code].undiscounted = originalPrice;
+            appliedRules[this.code] = {
+                discount: discount
+            }
         }
     }
 }

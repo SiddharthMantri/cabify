@@ -3,8 +3,10 @@
 class Checkout {
     constructor(initData) {
         let { pricingRules = [], products = [] } = initData;
-        this.cart = [];
-        this.internalCart = [];
+        // this.cart = [];
+        // this.internalCart = [];
+        this.cart = {};
+        this.internalCart = {};
         this.products = [...products];
         this.pricingRules = [...pricingRules];
         this.appliedRules = [];
@@ -18,8 +20,22 @@ class Checkout {
         this.total = this.total.bind(this);
     }
     scanItem(product) {
-        this.cart.push({ ...product });
-        this.internalCart.push({ ...product });
+        if (this.cart[product.code]) {
+            this.cart[product.code].qty += 1;
+        } else {
+            this.cart[product.code] = {
+                product: { ...product },
+                qty: 1,
+            }
+        }
+        if (this.internalCart[product.code]) {
+            this.internalCart[product.code].qty += 1;
+        } else {
+            this.internalCart[product.code] = {
+                product: { ...product },
+                qty: 1,
+            }
+        }
         this.updateCheckout(this.cart);
     }
 
@@ -38,20 +54,32 @@ class Checkout {
         return this;
     }
     addByQuantity(code, qty) {
-        let p = this.products.find(p => p.code === code);
-        let subCart = Array.of(qty).fill({ ...p });
-        let newCart = [...this.cart, ...subCart];
+        let product = this.cart.findIndex(product => product.code === code);
+        if (this.cart[code]) {
+            this.cart[code].qty = qty
+        } else {
+            this.cart[code] = {
+                product: { ...product },
+                qty: qty
+            }
+        }
+        if (this.internalCart[code]) {
+            this.internalCart[code].qty = qty
+        } else {
+            this.internalCart[code] = {
+                product: { ...product },
+                qty: qty
+            }
+        }
+        this.updateCheckout(this.cart);
     }
 
     updateCheckout(cart) {
         this.pricingRules.forEach(rule => {
-            rule.applyDiscount(cart);
+            rule.applyDiscount(cart, this.appliedRules);
         });
-        this.grossTotal = cart.reduce((sum, next) => sum + next.price, 0);
-        this.undiscounted = this.internalCart.reduce(
-            (sum, next) => sum + next.price,
-            0
-        );
+        this.grossTotal = Object.keys({ ...cart }).reduce((sum, next) => sum + cart[next].discounted, 0);
+        this.undiscounted = Object.keys({ ...cart }).reduce((sum, next) => sum + cart[next].undiscounted, 0);
         let clone = Object.assign(Object.create(Object.getPrototypeOf(this)), this);
         return clone;
     }
