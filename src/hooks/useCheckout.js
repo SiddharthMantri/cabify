@@ -1,41 +1,45 @@
 import { useState, useMemo, useCallback, useEffect } from "react";
-import { products } from "../data/products";
+import Checkout from "../data/Checkout";
 
-export const useCheckout = (pricingRules = []) => {
-  const rules = useMemo(() => pricingRules, []);
-  const productList = useMemo(() => products, []);
+export const useCheckout = (initData = {}) => {
+    const checkout = new Checkout(initData);
+    const {
+        cart = [],
+        internalCart = [],
+        products = [],
+        pricingRules = [],
+        appliedRules = [],
+        grossTotal = 0,
+        scan = () => { },
+        total = () => { },
+        updateCheckout = () => { },
+        undiscounted
+    } = checkout;
+    const performUpdate = applyFunction => item => {
+        applyFunction(item);
+        let newState = updateCheckout(cart);
+        let { cart: newStateCart, undiscounted } = newState;
+        setState({
+            ...defaultState,
+            newStateCart,
+            grossTotal: newState.grossTotal,
+            appliedRules: newState.appliedRules,
+            total: newState.total,
+            undiscounted
+        });
+    };
+    const defaultState = {
+        cart,
+        internalCart,
+        products,
+        pricingRules,
+        appliedRules,
+        grossTotal,
+        scan: performUpdate(scan),
+        undiscounted
+    };
 
-  const [cart, setCart] = useState([]);
+    let [state, setState] = useState(defaultState);
 
-  const [total, setTotal] = useState(0);
-
-  const [grossTotal, setGrossTotal] = useState(0);
-
-  const [discounts, setDiscounts] = useState([]);
-
-  const scan = useCallback(
-    code => {
-      let p = productList.filter(p => p.code === code);
-      let clone = Object.assign(
-        Object.create(Object.getPrototypeOf(p[0])),
-        p[0]
-      );
-      let newCart = [...cart, clone];
-      setCart(newCart);
-    },
-    [cart]
-  );
-
-  const reset = () => {
-    setCart([]);
-    setTotal(0);
-  };
-
-  useEffect(() => {
-    rules.forEach(rule => rule.applyDiscount(cart));
-    let newTotal = [...cart].reduce((sum, next) => sum + next.price, 0.0);
-    setTotal(newTotal);
-  }, [cart]);
-
-  return [cart, scan, total, reset];
+    return { state };
 };

@@ -1,33 +1,27 @@
-import React, { Fragment, useEffect, useState } from "react";
-import BulkDiscount from "../../data/BulkDiscount";
-import TwoForOneDiscount from "../../data/TwoForOneDiscount";
-import { products } from "../../data/products";
-import { useCheckout } from "../../hooks/useCheckout";
+import React, { Fragment, useContext } from "react";
+import { Context } from "../../App";
 
-const bulkRule = new BulkDiscount("TSHIRT", 3, 1, products);
-const twoRule = new TwoForOneDiscount("CAP", 2);
 
 const Checkout = props => {
-  let [cart, scan, total, reset] = useCheckout([bulkRule, twoRule]);
-  const addToCart = e => {
-    scan("TSHIRT");
+  const { state } = useContext(Context);
+
+  const { scan, cart, internalCart, grossTotal, undiscounted } = state;
+
+  const addItem = code => e => {
+    scan(code);
   };
-  const addCap = e => {
-    scan("CAP");
-  };
-  const resetCart = e => {
-    reset();
-  };
+
   return (
     <Fragment>
       <div>items in cart: {cart.length}</div>
-      <div>{cart.map(c => `${c.price} ,`)}</div>
+      <div>{cart.map(c => `${c.code} | ${c.price} ,`)}</div>
+      <div>{internalCart.map(c => `${c.code} | ${c.price} ,`)}</div>
       <div>
-        <button onClick={addToCart}>Add Tee to cart</button>
-        <button onClick={addCap}>Add Cap to cart</button>
+        <button onClick={addItem("TSHIRT")}>Add Tee to cart</button>
+        <button onClick={addItem("CAP")}>Add Cap to cart</button>
       </div>
-      <div>Total cost: {total}</div>
-      <button onClick={resetCart}>Reset</button>
+      <div>Total cost: {grossTotal}</div>
+      <div>Undiscounted: {undiscounted}</div>
     </Fragment>
   );
 };
