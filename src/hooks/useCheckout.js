@@ -1,4 +1,4 @@
-import { useState, useMemo, useCallback, useEffect } from "react";
+import { useState } from "react";
 import Checkout from "../data/Checkout";
 
 export const useCheckout = (initData = {}) => {
@@ -15,8 +15,8 @@ export const useCheckout = (initData = {}) => {
         updateCheckout = () => { },
         undiscounted
     } = checkout;
-    const performUpdate = applyFunction => item => {
-        applyFunction(item);
+    const performUpdate = functionToApply => item => {
+        functionToApply(item);
         let newState = updateCheckout(cart);
         let { cart: newStateCart, undiscounted } = newState;
         setState({

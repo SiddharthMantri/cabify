@@ -5,6 +5,7 @@ import BulkDiscount from './data/BulkDiscount';
 import TwoForOneDiscount from './data/TwoForOneDiscount';
 import { products } from './data/products';
 import { useCheckout } from './hooks/useCheckout';
+import AppWrapper from './components/app-wrapper';
 
 
 const bulkRule = new BulkDiscount("TSHIRT", 3, 1, products);
@@ -24,7 +25,7 @@ function App() {
 	return (
 		<div className="App">
 			<Provider>
-				<Checkout />
+				<AppWrapper />
 			</Provider>
 		</div>
 	);
