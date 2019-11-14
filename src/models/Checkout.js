@@ -1,5 +1,3 @@
-// import { products } from "./products";
-
 class Checkout {
     constructor(initData) {
         let { pricingRules = [], products = [] } = initData;
@@ -9,7 +7,7 @@ class Checkout {
         this.internalCart = {};
         this.products = [...products];
         this.pricingRules = [...pricingRules];
-        this.appliedRules = [];
+        this.appliedRules = {};
         this.undiscounted = 0;
         this.grossTotal = 0;
 
