@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Checkout from "../data/Checkout";
+import Checkout from "../models/Checkout";
 
 export const useCheckout = (initData = {}) => {
     const checkout = new Checkout(initData);
