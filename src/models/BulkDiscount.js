@@ -12,17 +12,21 @@ class BulkDiscount {
     }
 
     applyDiscount(cart = {}, appliedRules = {}) {
-        let clone = {...cart};
+        let clone = { ...cart };
         let productsToCheck = clone[this.code];
-        if (productsToCheck && productsToCheck.qty >= this.quantity) {
-            let discountedAmount = (productsToCheck.qty * this.discount);
-            let originalPrice = (productsToCheck.product.price * productsToCheck.qty);
-            let discount = originalPrice - discountedAmount;
+        if (productsToCheck) {
+            let originalPrice = productsToCheck.product.price * productsToCheck.qty;
+            let discount = productsToCheck.product.price * productsToCheck.qty;
+            if (productsToCheck && productsToCheck.qty >= this.quantity) {
+                let discountedAmount = productsToCheck.qty * this.discount;
+                discount = originalPrice - discountedAmount;
+                appliedRules["Bulk Offer"] = {
+                    discount: discount,
+                    savings: originalPrice - discount
+                };
+            }
             clone[this.code].discounted = discount;
             clone[this.code].undiscounted = originalPrice;
-            appliedRules['Bulk Offer'] = {
-                discounted: discount
-            }
         }
     }
 }

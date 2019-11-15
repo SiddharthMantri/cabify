@@ -20,19 +20,22 @@ class Checkout {
     scanItem(product) {
         if (this.cart[product.code]) {
             this.cart[product.code].qty += 1;
+            this.cart[product.code].undiscounted =
+                product.price * this.cart[product.code].qty;
         } else {
             this.cart[product.code] = {
                 product: { ...product },
                 qty: 1,
-            }
+                undiscounted: product.price * 1
+            };
         }
         if (this.internalCart[product.code]) {
             this.internalCart[product.code].qty += 1;
         } else {
             this.internalCart[product.code] = {
                 product: { ...product },
-                qty: 1,
-            }
+                qty: 1
+            };
         }
         this.updateCheckout(this.cart);
     }
@@ -52,22 +55,26 @@ class Checkout {
         return this;
     }
     addByQuantity(code, qty) {
-        let product = this.cart.findIndex(product => product.code === code);
+        let intQty = parseInt(qty);
+        let product = this.products.find(p => p.code === code);
         if (this.cart[code]) {
-            this.cart[code].qty = qty
+            this.cart[code].qty = intQty;
+            this.cart[code].undiscounted = product.price * intQty;
         } else {
             this.cart[code] = {
                 product: { ...product },
-                qty: qty
-            }
+                qty: qty,
+                undiscounted: product.price * intQty
+            };
         }
         if (this.internalCart[code]) {
-            this.internalCart[code].qty = qty
+            this.internalCart[code].qty = qty;
         } else {
             this.internalCart[code] = {
                 product: { ...product },
-                qty: qty
-            }
+                qty: qty,
+                undiscounted: product.price * intQty
+            };
         }
         this.updateCheckout(this.cart);
     }
@@ -76,8 +83,14 @@ class Checkout {
         this.pricingRules.forEach(rule => {
             rule.applyDiscount(cart, this.appliedRules);
         });
-        this.grossTotal = Object.keys({ ...cart }).reduce((sum, next) => sum + cart[next].discounted, 0);
-        this.undiscounted = Object.keys({ ...cart }).reduce((sum, next) => sum + cart[next].undiscounted, 0);
+        this.grossTotal = Object.keys({ ...cart }).reduce(
+            (sum, next) => sum + cart[next].discounted,
+            0
+        );
+        this.undiscounted = Object.keys({ ...cart }).reduce(
+            (sum, next) => sum + cart[next].undiscounted,
+            0
+        );
         let clone = Object.assign(Object.create(Object.getPrototypeOf(this)), this);
         return clone;
     }

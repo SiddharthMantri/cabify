@@ -4,30 +4,33 @@ class FreeDiscount {
 		this.quantity = quantity;
 	}
 
-	applyDiscount(cart = {}, appliedRules = {}) {
+	applyDiscount(cart = {}, appliedRules) {
 		let clone = { ...cart };
 		let productsToCheck = clone[this.code];
-		if (productsToCheck && productsToCheck.qty >= this.quantity) {
-			let { qty } = productsToCheck;
-			let { product } = productsToCheck;
-			let discounted = 0;
-			let undiscounted = product.price * qty;
-			let numFree = 0;
-			for (let i = this.quantity; i < qty; i = this.quantity + 1) {
-				numFree += 1;
+		let discounted = 0;
+		let price =
+			productsToCheck && productsToCheck.product
+				? productsToCheck.product.price
+				: 0;
+		let undiscounted = productsToCheck ? price * productsToCheck.qty : 0;
+		let numDiscounted = 0;
+		let qty = productsToCheck ? productsToCheck.qty : 0;
+		if (productsToCheck && qty > this.quantity) {
+			for (let i = this.quantity; i < qty; i = i + this.quantity + 1) {
+				numDiscounted += 1;
 			}
-			if (numFree >= 1) {
-				discounted = undiscounted - (product.price * numFree);
-				cart[this.code].discounted = discounted;
-				appliedRules[`${this.quantity}x1 Free offer`] = {
-					discount: discounted
-				}
-			}else{
-				cart[this.code].discounted = undiscounted;
-			}
-			cart[this.code].undiscounted = undiscounted;
 		}
-
+		discounted = undiscounted - price * numDiscounted;
+		if (productsToCheck && qty > this.quantity) {
+			productsToCheck.undiscounted = undiscounted;
+			productsToCheck.discounted = discounted;
+			let savings = undiscounted - discounted;
+			appliedRules[`${this.quantity}x1 Free`] = {
+				undiscounted,
+				discounted,
+				savings
+			};
+		}
 	}
 }
 export default FreeDiscount;
