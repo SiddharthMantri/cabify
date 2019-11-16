@@ -48,8 +48,9 @@ class Checkout {
         let p = this.cart[code];
         if (p && p.qty > 0) {
             p.qty = p.qty - 1;
+            this.cart[code] = this.calculateCurrentPrice(this.cart[code]);
         }
-        this.cart[code] = this.calculateCurrentPrice(this.cart[code]);
+        
         this.updateCheckout(this.cart);
     }
     addByQuantity(code, qty) {

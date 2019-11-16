@@ -25,7 +25,10 @@ const Summary = props => {
                     <h2>Discounts</h2>
                     <ul>
                         {Object.keys(appliedRules).map((rule, index) => (
-                            <li><span>{rule}</span><span>-{appliedRules[rule].savings}€</span></li>
+                            <li key={index}>
+                                <span>{rule}</span>
+                                <span>-{appliedRules[rule].savings}€</span>
+                            </li>
                         ))}
                     </ul>
                 </div>

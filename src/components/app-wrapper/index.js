@@ -1,14 +1,22 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useContext } from 'react';
 import Summary from '../summary';
 import ShoppingCart from '../shopping-cart';
+import Modal from '../modal';
+import { Context } from '../../store/context';
 
 
 
 const AppWrapper = props => {
+    const { modal: { open = false } } = useContext(Context);
     return (
         <Fragment>
-            <ShoppingCart />
-            <Summary />
+            {!open ?
+                <Fragment>
+                    <ShoppingCart />
+                    <Summary />
+                </Fragment>:
+                <Modal />
+            }
         </Fragment>
     )
 }
