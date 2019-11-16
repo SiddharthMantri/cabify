@@ -1,10 +1,12 @@
 import React, { useContext, useState } from 'react';
-import { Context } from '../../../store/context';
+import { Context } from '../../store/context';
 
 
 const ProductRow = ({ name, price, code, imgUrl }) => {
     const { state, modal: { setOpen = ()=>{}, setData = ()=>{} } } = useContext(Context);
     let { scan, cart = {}, remove, addByQuantity } = state;
+    
+    
     let contextQty = cart[code] ? cart[code].qty : 0;
     const [qty, setQty] = useState(contextQty);
     const productInCart = cart[code] ? cart[code] : {};
@@ -37,6 +39,8 @@ const ProductRow = ({ name, price, code, imgUrl }) => {
         setOpen(true);
         setData({name, price, code, imgUrl});
     }
+
+    
     return (
         <li className="product row">
             <div className="col-product">

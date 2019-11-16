@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
-import { Context } from '../../../store/context'
-import ProductRow from '../product-row';
+import { Context } from '../../store/context'
+import ProductRow from './product-row';
 
 const ProductList = props => {
     const { state: { products = [] } } = useContext(Context);

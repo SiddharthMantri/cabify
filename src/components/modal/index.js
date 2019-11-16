@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, Fragment } from 'react';
+import React, { Fragment, useContext } from 'react';
 import { Context } from '../../store/context';
 
 
@@ -30,8 +30,8 @@ const Modal = props => {
                                 {data.name}
                             </span>
                             <span className="product-price">
-                                {data.price}€
-                        </span>
+                                {data.price} €
+                            </span>
                         </h1>
                         <p className="product-detail-para">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut

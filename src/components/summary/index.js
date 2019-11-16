@@ -34,12 +34,10 @@ const Summary = props => {
                 </div>
             }
             <div className="summary-total wrapper">
-                <ul>
-                    <li>
-                        <span className="summary-total-cost">Total cost</span>
-                        <span className="summary-total-price">{grossTotal}€</span>
-                    </li>
-                </ul>
+                <h1 className="summary-total-cost">
+                    <span>Total Cost</span>
+                    <span className="summary-total-price">{grossTotal}€</span>
+                </h1>
                 <button type="submit">Checkout</button>
             </div>
         </aside>
