@@ -4,6 +4,7 @@ class BulkDiscount {
         this.quantity = quantity;
         this.discount = discount;
         this.products = productList;
+        this.name = `x${this.quantity} ${this.code} Offer`;
     }
 
     getOriginalProductPrice(code) {
@@ -20,10 +21,12 @@ class BulkDiscount {
             if (productsToCheck && productsToCheck.qty >= this.quantity) {
                 let discountedAmount = productsToCheck.qty * this.discount;
                 discount = originalPrice - discountedAmount;
-                appliedRules[`x${this.quantity} ${this.code} Offer`] = {
+                appliedRules[this.name] = {
                     discount: discount,
                     savings: originalPrice - discount
                 };
+            }else if(productsToCheck && productsToCheck.qty < this.quantity){
+                delete appliedRules[this.name];
             }
             clone[this.code].discounted = discount;
             clone[this.code].undiscounted = originalPrice;

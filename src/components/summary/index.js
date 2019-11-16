@@ -5,7 +5,12 @@ const Summary = props => {
     const { state } = useContext(Context);
     const [itemCount, setItemCount] = useState(0);
     let { cart = {}, undiscounted = 0, grossTotal = 0, appliedRules = {} } = state;
-    
+
+    useEffect(()=>{
+        let sum = Object.keys(cart).reduce((sum, next) => cart[next] ? sum + cart[next].qty : 0, 0);
+        setItemCount(sum)
+    }, [state])
+
     return (
         <aside className="summary">
             <h1 className="main">Order Summary</h1>
@@ -15,14 +20,16 @@ const Summary = props => {
                     <span className="summary-items-price">{undiscounted}<span className="currency">€</span></span>
                 </li>
             </ul>
-            <div className="summary-discounts wrapper-half border">
-                <h2>Discounts</h2>
-                <ul>
-                    {Object.keys(appliedRules).map((rule, index)=>(
-                        <li><span>{rule}</span><span>-{appliedRules[rule].savings}€</span></li>
-                    ))}
-                </ul>
-            </div>
+            {Object.keys(appliedRules).length > 0 &&
+                <div className="summary-discounts wrapper-half border">
+                    <h2>Discounts</h2>
+                    <ul>
+                        {Object.keys(appliedRules).map((rule, index) => (
+                            <li><span>{rule}</span><span>-{appliedRules[rule].savings}€</span></li>
+                        ))}
+                    </ul>
+                </div>
+            }
             <div className="summary-total wrapper">
                 <ul>
                     <li>

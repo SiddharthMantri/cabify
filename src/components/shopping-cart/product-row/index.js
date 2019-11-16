@@ -1,11 +1,11 @@
-import React, { useContext, useState, useEffect, useMemo } from 'react';
+import React, { useContext, useState } from 'react';
 import { Context } from '../../../store/context';
 
 
 const ProductRow = ({ name, price, code }) => {
     const { state } = useContext(Context);
     const [qty, setQty] = useState(0);
-    let { scan, cart = {}, remove } = state;
+    let { scan, cart = {}, remove, addByQuantity } = state;
 
     const productInCart = cart[code] ? cart[code] : {}
 
@@ -20,9 +20,11 @@ const ProductRow = ({ name, price, code }) => {
         }
         setQty(value);
     }
-    useEffect(()=>{
-        console.log(state);
-    }, [state])
+
+    const handleInputChange = e => {
+        addByQuantity(code, e.target.value);
+        setQty(e.target.value);
+    }
 
     return (
         <li className="product row">
@@ -37,7 +39,7 @@ const ProductRow = ({ name, price, code }) => {
             </div>
             <div className="col-quantity">
                 <button className="count" onClick={handleUpdateQty('reduce')}>-</button>
-                <input type="text" className="product-quantity" value={qty} onChange={()=>{}} />
+                <input type="number" className="product-quantity" value={qty} onChange={handleInputChange} />
                 <button className="count" onClick={handleUpdateQty('increase')}>+</button>
             </div>
             <div className="col-price">
