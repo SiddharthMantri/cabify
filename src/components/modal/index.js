@@ -23,18 +23,29 @@ const Modal = props => {
                 <div style={{ textAlign: "right", cursor: "pointer" }} onClick={handleClose}>
                     x
                 </div>
-                <div className="product-detail-text">
-                    <h1 className="">
-                        {data.name}
-                    </h1>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                        cillum dolore eu fugiat nulla pariatur.
-                    </p>
-                    <button onClick={addToCart} type="submit">Add to cart</button>
+                <div className="product-detail-summary">
+                    <div className="product-detail-box">
+                        <h1 className="product-detail-text">
+                            <span className="product-title">
+                                {data.name}
+                            </span>
+                            <span className="product-price">
+                                {data.price}€
+                        </span>
+                        </h1>
+                        <p className="product-detail-para">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                            laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                            cillum dolore eu fugiat nulla pariatur.
+                        </p>
+                        <p className="product-detail-code">
+                            Product code {data.code}
+                        </p>
+                        <button onClick={addToCart} type="submit">Add to cart</button>
+                    </div>
                 </div>
+
             </aside>
         </Fragment>
     )

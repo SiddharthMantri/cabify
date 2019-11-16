@@ -211,6 +211,7 @@ h2,
 .product h1 {
   font-size: 16px;
   line-height: 24px;
+  text-align: left;
 }
 
 .products button.count,
@@ -233,7 +234,7 @@ body {
   margin: 0;
   padding: 0;
   height: 100vh;
-  background-image: url("img/background.png");
+  background-image: url("/img/background.png");
   background-color: #212240;
   background-position: top left;
   background-size: cover;
@@ -492,9 +493,32 @@ input {
 .product-detail-text{
   text-align: justify;
   padding: 40px 0 40px 0;
-
+  border-bottom: 1px solid rgba(33, 34, 64, 0.16);
+  padding-bottom: 16px;
 }
 .modal-detail-title{
   padding: 16px 0px 16px 0px;
+}
+.product-price{
+  float: right;
+}
+.product-detail-para{
+  text-align: justify;
+  padding: 20px 0px;
   border-bottom: 1px solid rgba(33, 34, 64, 0.16);
+  font-size: 14px
+}
+.product-detail-box{
+  margin-top: 40px
+}
+.product-detail-summary{
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+}
+.product-detail-code{
+  text-align: left;
+  padding: 16px 0px;
+  font-size: 14px;
+  color: #a7a7a7;
 }
