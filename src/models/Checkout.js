@@ -7,7 +7,6 @@ class Checkout {
         this.appliedRules = {};
         this.undiscounted = 0;
         this.grossTotal = 0;
-
         this.scan = this.scan.bind(this);
         this.scanProduct = this.scanProduct.bind(this);
         this.remove = this.remove.bind(this);
@@ -17,7 +16,6 @@ class Checkout {
     }
     calculateCurrentPrice(cartItem) {
         let { product, qty, undiscounted = 0, discounted = 0 } = cartItem;
-
         let { price } = product;
         undiscounted = price * qty;
         discounted = price * qty;
@@ -36,7 +34,6 @@ class Checkout {
         this.cart[product.code] = this.calculateCurrentPrice(this.cart[product.code]);
         this.updateCheckout(this.cart);
     }
-
     scan(code = "") {
         let product = this.products.find(p => p.code === code);
         if (product) {
@@ -50,7 +47,6 @@ class Checkout {
             p.qty = p.qty - 1;
             this.cart[code] = this.calculateCurrentPrice(this.cart[code]);
         }
-        
         this.updateCheckout(this.cart);
     }
     addByQuantity(code, qty) {
@@ -67,6 +63,7 @@ class Checkout {
                 undiscounted: product.price * intQty
             };
         }
+        this.cart[code] = this.calculateCurrentPrice(this.cart[code]);
         this.updateCheckout(this.cart);
     }
 

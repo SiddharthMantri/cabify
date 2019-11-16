@@ -17,7 +17,7 @@ const Modal = props => {
     return (
         <Fragment>
             <section className="products" style={{ padding: "0px" }}>
-                <img alt={data.name} src={data.imgXlUrl} style={{ width: "100%", height: "auto%" }}></img>
+                <img alt={data.name} src={data.imgXlUrl} style={{ width: "auto", height: "100%" }}></img>
             </section>
             <aside className="summary" style={{ background: "#fff" }}>
                 <div style={{ textAlign: "right", cursor: "pointer" }} onClick={handleClose}>
@@ -45,7 +45,6 @@ const Modal = props => {
                         <button onClick={addToCart} type="submit">Add to cart</button>
                     </div>
                 </div>
-
             </aside>
         </Fragment>
     )

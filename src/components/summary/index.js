@@ -6,7 +6,7 @@ const Summary = props => {
     const [itemCount, setItemCount] = useState(0);
     let { cart = {}, undiscounted = 0, grossTotal = 0, appliedRules = {} } = state;
 
-    useEffect(()=>{
+    useEffect(() => {
         let sum = Object.keys(cart).reduce((sum, next) => cart[next] ? sum + cart[next].qty : 0, 0);
         setItemCount(sum)
     }, [state])

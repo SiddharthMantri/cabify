@@ -3,14 +3,11 @@ import { Context } from '../../store/context';
 
 
 const ProductRow = ({ name, price, code, imgUrl, imgXlUrl }) => {
-    const { state, modal: { setOpen = ()=>{}, setData = ()=>{} } } = useContext(Context);
+    const { state, modal: { setOpen = () => { }, setData = () => { } } } = useContext(Context);
     let { scan, cart = {}, remove, addByQuantity } = state;
-    
-    
     let contextQty = cart[code] ? cart[code].qty : 0;
     const [qty, setQty] = useState(contextQty);
     const productInCart = cart[code] ? cart[code] : {};
-
     const handleUpdateQty = type => e => {
         let value = 0;
         let currentValue = parseInt(qty);
@@ -26,7 +23,7 @@ const ProductRow = ({ name, price, code, imgUrl, imgXlUrl }) => {
         setQty(value);
     }
     const handleInputChange = e => {
-        let intValue = (e.target.validity.valid) ? e.target.value : qty
+        let intValue = e.target.validity.valid ? e.target.value : qty;
         addByQuantity(code, intValue);
         setQty(intValue);
     }
@@ -37,10 +34,8 @@ const ProductRow = ({ name, price, code, imgUrl, imgXlUrl }) => {
     }
     const handleModalClick = () => {
         setOpen(true);
-        setData({name, price, code, imgUrl, imgXlUrl});
+        setData({ name, price, code, imgUrl, imgXlUrl });
     }
-
-
     return (
         <li className="product row">
             <div className="col-product">
@@ -54,7 +49,7 @@ const ProductRow = ({ name, price, code, imgUrl, imgXlUrl }) => {
             </div>
             <div className="col-quantity">
                 <button className="count" onClick={handleUpdateQty('reduce')}>-</button>
-                <input type="text" pattern={"[0-9]*"} className="product-quantity" value={qty} onChange={handleInputChange} onBlur={handleBlur} />
+                <input type="text" pattern={"[0-9]{1,3}"} className="product-quantity" value={qty} onChange={handleInputChange} onBlur={handleBlur} />
                 <button className="count" onClick={handleUpdateQty('increase')}>+</button>
             </div>
             <div className="col-price">
