@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import { Context } from '../../store/context';
 
 
-const ProductRow = ({ name, price, code, imgUrl }) => {
+const ProductRow = ({ name, price, code, imgUrl, imgXlUrl }) => {
     const { state, modal: { setOpen = ()=>{}, setData = ()=>{} } } = useContext(Context);
     let { scan, cart = {}, remove, addByQuantity } = state;
     
@@ -37,10 +37,10 @@ const ProductRow = ({ name, price, code, imgUrl }) => {
     }
     const handleModalClick = () => {
         setOpen(true);
-        setData({name, price, code, imgUrl});
+        setData({name, price, code, imgUrl, imgXlUrl});
     }
 
-    
+
     return (
         <li className="product row">
             <div className="col-product">
