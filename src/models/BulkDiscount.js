@@ -20,7 +20,7 @@ class BulkDiscount {
             if (productsToCheck && productsToCheck.qty >= this.quantity) {
                 let discountedAmount = productsToCheck.qty * this.discount;
                 discount = originalPrice - discountedAmount;
-                appliedRules["Bulk Offer"] = {
+                appliedRules[`x${this.quantity} ${this.code} Offer`] = {
                     discount: discount,
                     savings: originalPrice - discount
                 };

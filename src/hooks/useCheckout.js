@@ -14,7 +14,8 @@ export const useCheckout = (initData = {}) => {
         total = () => { },
         updateCheckout = () => { },
         undiscounted,
-        addByQuantity
+        addByQuantity,
+        remove
     } = checkout;
     const performUpdate = applyFunction => item => {
         applyFunction(item);
@@ -39,7 +40,7 @@ export const useCheckout = (initData = {}) => {
             grossTotal: newState.grossTotal,
             appliedRules: newState.appliedRules,
             total: newState.total,
-            undiscounted
+            undiscounted,
         });
     };
     const defaultState = {
@@ -51,7 +52,8 @@ export const useCheckout = (initData = {}) => {
         grossTotal,
         scan: performUpdate(scan),
         undiscounted,
-        addByQuantity: updateByQty(addByQuantity)
+        addByQuantity: updateByQty(addByQuantity),
+        remove: performUpdate(remove)
     };
 
     let [state, setState] = useState(defaultState);

@@ -1,7 +1,29 @@
-import React from 'react';
+import React, { useContext, useState, useEffect, useMemo } from 'react';
+import { Context } from '../../../store/context';
 
 
-const ProductRow = ({name, price, code}) => {    
+const ProductRow = ({ name, price, code }) => {
+    const { state } = useContext(Context);
+    const [qty, setQty] = useState(0);
+    let { scan, cart = {}, remove } = state;
+
+    const productInCart = cart[code] ? cart[code] : {}
+
+    const handleUpdateQty = type => e => {
+        let value = 0;
+        if (type === 'reduce') {
+            value = parseInt(qty) <= 0 ? 0 : parseInt(qty) - 1
+            remove(code);
+        } else {
+            value = parseInt(qty) + 1;
+            scan(code);
+        }
+        setQty(value);
+    }
+    useEffect(()=>{
+        console.log(state);
+    }, [state])
+
     return (
         <li className="product row">
             <div className="col-product">
@@ -14,16 +36,16 @@ const ProductRow = ({name, price, code}) => {
                 </figure>
             </div>
             <div className="col-quantity">
-                <button className="count">-</button>
-                <input type="text" className="product-quantity" value="3" />
-                <button className="count">+</button>
+                <button className="count" onClick={handleUpdateQty('reduce')}>-</button>
+                <input type="text" className="product-quantity" value={qty} onChange={()=>{}} />
+                <button className="count" onClick={handleUpdateQty('increase')}>+</button>
             </div>
             <div className="col-price">
                 <span className="product-price">{price}</span>
                 <span className="product-currency currency">€</span>
             </div>
             <div className="col-total">
-                <span className="product-price">60</span>
+                <span className="product-price">{productInCart.undiscounted || 0}</span>
                 <span className="product-currency currency">€</span>
             </div>
         </li>

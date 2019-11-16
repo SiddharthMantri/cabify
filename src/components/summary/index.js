@@ -1,35 +1,38 @@
-import React from 'react';
+import React, { useContext, useState, useEffect } from 'react';
+import { Context } from '../../store/context';
 
 const Summary = props => {
+    const { state } = useContext(Context);
+    const [itemCount, setItemCount] = useState(0);
+    let { cart = {}, undiscounted = 0, grossTotal = 0, appliedRules = {} } = state;
+    
     return (
-        <>
-            <aside className="summary">
-                <h1 className="main">Order Summary</h1>
-                <ul className="summary-items wrapper border">
+        <aside className="summary">
+            <h1 className="main">Order Summary</h1>
+            <ul className="summary-items wrapper border">
+                <li>
+                    <span className="summary-items-number">{itemCount} Items</span>
+                    <span className="summary-items-price">{undiscounted}<span className="currency">€</span></span>
+                </li>
+            </ul>
+            <div className="summary-discounts wrapper-half border">
+                <h2>Discounts</h2>
+                <ul>
+                    {Object.keys(appliedRules).map((rule, index)=>(
+                        <li><span>{rule}</span><span>-{appliedRules[rule].savings}€</span></li>
+                    ))}
+                </ul>
+            </div>
+            <div className="summary-total wrapper">
+                <ul>
                     <li>
-                        <span className="summary-items-number">11 Items</span>
-                        <span className="summary-items-price">120<span className="currency">€</span></span>
+                        <span className="summary-total-cost">Total cost</span>
+                        <span className="summary-total-price">{grossTotal}€</span>
                     </li>
                 </ul>
-                <div className="summary-discounts wrapper-half border">
-                    <h2>Discounts</h2>
-                    <ul>
-                        <li><span>2x1 Mug offer</span><span>-10€</span></li>
-                        <li><span>x3 Shirt offer</span><span>-3€</span></li>
-                        <li><span>Promo code</span><span>0€</span></li>
-                    </ul>
-                </div>
-                <div className="summary-total wrapper">
-                    <ul>
-                        <li>
-                            <span className="summary-total-cost">Total cost</span>
-                            <span className="summary-total-price">107€</span>
-                        </li>
-                    </ul>
-                    <button type="submit">Checkout</button>
-                </div>
-            </aside>
-        </>
+                <button type="submit">Checkout</button>
+            </div>
+        </aside>
     )
 }
 export default Summary;
