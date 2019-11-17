@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/cabify/static/css/main.ba9456da.chunk.css",
+    "main.js": "/cabify/static/js/main.0394933a.chunk.js",
+    "main.js.map": "/cabify/static/js/main.0394933a.chunk.js.map",
+    "runtime-main.js": "/cabify/static/js/runtime-main.c93b9376.js",
+    "runtime-main.js.map": "/cabify/static/js/runtime-main.c93b9376.js.map",
+    "static/js/2.b3b215c8.chunk.js": "/cabify/static/js/2.b3b215c8.chunk.js",
+    "static/js/2.b3b215c8.chunk.js.map": "/cabify/static/js/2.b3b215c8.chunk.js.map",
+    "index.html": "/cabify/index.html",
+    "precache-manifest.848db72e11ab01cf7e1b96093dd09ac6.js": "/cabify/precache-manifest.848db72e11ab01cf7e1b96093dd09ac6.js",
+    "service-worker.js": "/cabify/service-worker.js",
+    "static/css/main.ba9456da.chunk.css.map": "/cabify/static/css/main.ba9456da.chunk.css.map"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.c93b9376.js",
+    "static/js/2.b3b215c8.chunk.js",
+    "static/css/main.ba9456da.chunk.css",
+    "static/js/main.0394933a.chunk.js"
+  ]
+}
