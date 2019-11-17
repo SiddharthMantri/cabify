@@ -1,13 +1,14 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { Context } from '../../store/context';
+import PropTypes from 'prop-types';
 
-
-const ProductRow = ({ name, price, code, imgUrl, imgXlUrl }) => {
+const ProductRow = ({ name = "", price = 0, code = "", imgUrl = "", imgXlUrl = "" }) => {
     const { state, modal: { setOpen = () => { }, setData = () => { } } } = useContext(Context);
     let { scan, cart = {}, remove, addByQuantity } = state;
 
     const [qty, setQty] = useState(0);
     const productInCart = cart[code] ? cart[code] : {};
+    // eslint-disable-next-line no-unused-vars
     const handleUpdateQty = type => e => {
         let value = 0;
         let currentValue = parseInt(qty);
@@ -68,5 +69,12 @@ const ProductRow = ({ name, price, code, imgUrl, imgXlUrl }) => {
             </div>
         </li>
     )
+}
+ProductRow.propTypes = {
+    name: PropTypes.string.isRequired,
+    price: PropTypes.number,
+    code: PropTypes.string,
+    imgUrl: PropTypes.string,
+    imgXlUrl: PropTypes.string
 }
 export default ProductRow;

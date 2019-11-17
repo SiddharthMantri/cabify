@@ -3,7 +3,7 @@ import { useCheckout } from '../hooks/useCheckout';
 import { Context } from './context';
 import { setup } from './setup';
 import { useModal } from '../hooks/useModal';
-
+import PropTypes from 'prop-types';
 
 
 
@@ -18,5 +18,7 @@ const Provider = ({ children }) => {
         </Context.Provider>
     );
 };
-
+Provider.propTypes = {
+    children: PropTypes.node
+}
 export default Provider;
