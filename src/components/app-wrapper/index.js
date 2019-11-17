@@ -6,7 +6,7 @@ import { Context } from '../../store/context';
 
 
 
-const AppWrapper = props => {
+const AppWrapper = () => {
     const { modal: { open = false } } = useContext(Context);
     return (
         <Fragment>
@@ -14,7 +14,7 @@ const AppWrapper = props => {
                 <Fragment>
                     <ShoppingCart />
                     <Summary />
-                </Fragment>:
+                </Fragment> :
                 <Modal />
             }
         </Fragment>

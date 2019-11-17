@@ -7,6 +7,9 @@ class Checkout {
         this.appliedRules = {};
         this.undiscounted = 0;
         this.grossTotal = 0;
+        this.cartQty = 0;
+
+
         this.scan = this.scan.bind(this);
         this.scanProduct = this.scanProduct.bind(this);
         this.remove = this.remove.bind(this);
@@ -72,6 +75,7 @@ class Checkout {
             rule.applyDiscount(cart, this.appliedRules);
         });
         this.cart = cart;
+        this.cartQty = Object.keys({ ...cart }).reduce((sum, next) => cart[next] ? sum + cart[next].qty : 0, 0)
         this.grossTotal = Object.keys({ ...cart }).reduce((sum, next) => cart[next] ? sum + cart[next].discounted : 0, 0);
         this.undiscounted = Object.keys({ ...cart }).reduce((sum, next) => cart[next] ? sum + cart[next].undiscounted : 0, 0)
         let clone = Object.assign(Object.create(Object.getPrototypeOf(this)), this);

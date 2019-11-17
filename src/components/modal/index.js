@@ -2,9 +2,9 @@ import React, { Fragment, useContext } from 'react';
 import { Context } from '../../store/context';
 
 
-const Modal = props => {
+const Modal = () => {
     let modalContext = useContext(Context);
-    let { modal: { open = false, data = {}, setOpen = () => { }, setData = () => { } }, state: { scan = () => { } } } = modalContext;
+    let { modal: { data = {}, setOpen = () => { }, setData = () => { } }, state: { scan = () => { } } } = modalContext;
 
     const handleClose = () => {
         setOpen(false);
@@ -16,7 +16,7 @@ const Modal = props => {
     }
     return (
         <Fragment>
-            <section className="products" style={{ padding: "0px", position: "relative", overflow:"hidden" }}>
+            <section className="products" style={{ padding: "0px", position: "relative", overflow: "hidden" }}>
                 <img alt={data.name} src={data.imgXlUrl} className={'modal-image'}></img>
             </section>
             <aside className="summary" style={{ background: "#fff" }}>

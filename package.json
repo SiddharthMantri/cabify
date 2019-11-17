@@ -34,7 +34,10 @@
   "devDependencies": {
     "@types/react": "^16.9.11",
     "babel-eslint": "^10.0.3",
+    "eslint": "^6.6.0",
     "eslint-config-airbnb": "^18.0.1",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.18.2",
     "prettier-eslint": "^9.0.0"
   }
 }
