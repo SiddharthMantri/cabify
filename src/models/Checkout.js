@@ -59,7 +59,7 @@ class Checkout {
         } else {
             this.cart[code] = {
                 product: { ...product },
-                qty: qty,
+                qty: intQty,
                 undiscounted: product.price * intQty
             };
         }
