@@ -16,8 +16,8 @@ const Modal = props => {
     }
     return (
         <Fragment>
-            <section className="products" style={{ padding: "0px" }}>
-                <img alt={data.name} src={data.imgXlUrl} style={{ width: "auto", height: "100%" }}></img>
+            <section className="products" style={{ padding: "0px", position: "relative", overflow:"hidden" }}>
+                <img alt={data.name} src={data.imgXlUrl} className={'modal-image'}></img>
             </section>
             <aside className="summary" style={{ background: "#fff" }}>
                 <div style={{ textAlign: "right", cursor: "pointer" }} onClick={handleClose}>
