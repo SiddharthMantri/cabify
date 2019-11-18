@@ -1,68 +1,55 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Cabify Coding Challenge
 
-## Available Scripts
+#### Technologies Used
 
-In the project directory, you can run:
+The main libraries powering the UI:
+  - React - 16.11.0
 
-### `npm start`
+Initially, I thought about adding redux but felt that writing my own provider and hooks into Checkout would be much simpler given the size of the project.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Installation
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+One way to run this locally would be to clone this application using git and then running it with npm
+The project requires - Node v10.16 for it to run locally.
 
-### `npm test`
+```sh
+$ git clone https://github.com/SiddharthMantri/cabify.git
+$ cd cabify
+$ npm install
+$ npm start
+```
+This will open a browser at localhost:3000/
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### ReactJS
+I decided to use React given that the exiting markup for the page was easily decomposable into its components and React best support the declarative way of writing HTML using JSX. 
 
-### `npm run build`
+### File Structure
+The `src` folder is composed of 4 main parts of the app - Components, Hooks, Models and State. 
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- components - contains the main components of the UI markup. 
+- hooks - contains two custom hooks that hook onto the app state and are used in the state provider.
+- models - contains the various view models that are used for the UI.
+- state - contains the provider and context that use the hooks to provide data throughout the component tree.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+The src folder also contains `__tests__` which contain some simple tests to make sure the app is working as intended. 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Requisites completed
 
-### `npm run eject`
+- Have a Checkout class, that can be instantiated with products and discounts available. Allow adding products to the checkout with the scan method, passing the product ID as string in his first argument. Allow calculating the total price with the total method, which won't accept any arguments and will return the total price (discount already applied) as number
+  - Checkout.js can be instantiated with pricingRules and products
+  - This has been demonstrated in the `__tests__` folder under checkout.test.js
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Development choices
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- I have specifically not re-written any of the html provided in the oiriginal problem.
+- In the interest of time, I have broken the existing code into its components instead of rewriting from scratch.
+- I have not rewritten the css either. I have added some classes that are used by the app but haven't done anything special otherwise.
+- `Modular CSS` was an option that I considered but I have discarded it in interest of time and reduction of complexity. That being said, if the project was sufficiently large, I'd have broken the CSS into modules and used them only in the components required. 
+- I have used a simple Eslint configuration for code linting that has helped me in the past. I considered various style guides and settled on `babel-eslint` although I could've used `airbnb-base` as well. 
+- I have specifically not used `redux` or `react-redux` in this application. I feel that by writing my own state hooks and provider, i've reduced the size of the application compared to if I'd have used `redux`.
+- I have stuck to jest as a testing library. I would have liked to use an integration testing suite such as cypress as well. 
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
