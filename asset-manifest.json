@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/cabify-challenge/static/css/main.ba9456da.chunk.css",
-    "main.js": "/cabify-challenge/static/js/main.1c2d2faf.chunk.js",
-    "main.js.map": "/cabify-challenge/static/js/main.1c2d2faf.chunk.js.map",
-    "runtime-main.js": "/cabify-challenge/static/js/runtime-main.22606b3b.js",
-    "runtime-main.js.map": "/cabify-challenge/static/js/runtime-main.22606b3b.js.map",
-    "static/js/2.b3b215c8.chunk.js": "/cabify-challenge/static/js/2.b3b215c8.chunk.js",
-    "static/js/2.b3b215c8.chunk.js.map": "/cabify-challenge/static/js/2.b3b215c8.chunk.js.map",
-    "index.html": "/cabify-challenge/index.html",
-    "precache-manifest.b4d7dfdb76fb6d89e3caa440a71ec155.js": "/cabify-challenge/precache-manifest.b4d7dfdb76fb6d89e3caa440a71ec155.js",
-    "service-worker.js": "/cabify-challenge/service-worker.js",
-    "static/css/main.ba9456da.chunk.css.map": "/cabify-challenge/static/css/main.ba9456da.chunk.css.map"
+    "main.css": "/cabify/static/css/main.ba9456da.chunk.css",
+    "main.js": "/cabify/static/js/main.c64f8f4f.chunk.js",
+    "main.js.map": "/cabify/static/js/main.c64f8f4f.chunk.js.map",
+    "runtime-main.js": "/cabify/static/js/runtime-main.c93b9376.js",
+    "runtime-main.js.map": "/cabify/static/js/runtime-main.c93b9376.js.map",
+    "static/js/2.b3b215c8.chunk.js": "/cabify/static/js/2.b3b215c8.chunk.js",
+    "static/js/2.b3b215c8.chunk.js.map": "/cabify/static/js/2.b3b215c8.chunk.js.map",
+    "index.html": "/cabify/index.html",
+    "precache-manifest.ef5c428c278076f0f938e174ca794e5d.js": "/cabify/precache-manifest.ef5c428c278076f0f938e174ca794e5d.js",
+    "service-worker.js": "/cabify/service-worker.js",
+    "static/css/main.ba9456da.chunk.css.map": "/cabify/static/css/main.ba9456da.chunk.css.map"
   },
   "entrypoints": [
-    "static/js/runtime-main.22606b3b.js",
+    "static/js/runtime-main.c93b9376.js",
     "static/js/2.b3b215c8.chunk.js",
     "static/css/main.ba9456da.chunk.css",
-    "static/js/main.1c2d2faf.chunk.js"
+    "static/js/main.c64f8f4f.chunk.js"
   ]
 }
