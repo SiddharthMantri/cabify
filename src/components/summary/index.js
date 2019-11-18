@@ -1,35 +1,33 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { Context } from '../../store/context';
+import ItemList from './item-list';
+import DiscountList from './discount-list';
 
 const Summary = props => {
     const { state } = useContext(Context);
-    const [itemCount, setItemCount] = useState(0);
-    let { cart = {}, undiscounted = 0, grossTotal = 0, appliedRules = {} } = state;
-
-    useEffect(() => {
-        let sum = Object.keys(cart).reduce((sum, next) => cart[next] ? sum + cart[next].qty : 0, 0);
-        setItemCount(sum)
-    }, [state])
+    let { cart = {}, undiscounted = 0, grossTotal = 0, appliedRules = {}, cartQty = 0 } = state;
 
     return (
         <aside className="summary">
             <h1 className="main">Order Summary</h1>
-            <ul className="summary-items wrapper border">
+            <ul className="summary-items wrapper">
                 <li>
-                    <span className="summary-items-number">{itemCount} Items</span>
+                    <span className="summary-items-number">{cartQty} Items</span>
                     <span className="summary-items-price">{undiscounted}<span className="currency">€</span></span>
                 </li>
             </ul>
+            {cartQty > 0 &&
+                <div className="summary-discounts wrapper-half border" style={{ padding: "0px 0px 24px 0px", flexGrow: 1 }}>
+                    <ul>
+                        {Object.keys(cart).map((item, index) => (<ItemList key={index} item={cart[item]} />))}
+                    </ul>
+                </div>
+            }
             {Object.keys(appliedRules).length > 0 &&
                 <div className="summary-discounts wrapper-half border">
                     <h2>Discounts</h2>
                     <ul>
-                        {Object.keys(appliedRules).map((rule, index) => (
-                            <li key={index}>
-                                <span>{rule}</span>
-                                <span>-{appliedRules[rule].savings}€</span>
-                            </li>
-                        ))}
+                        {Object.keys(appliedRules).map((name, index) => <DiscountList key={index} name={name} rule={appliedRules[name]} />)}
                     </ul>
                 </div>
             }

@@ -76,6 +76,7 @@ class Checkout {
         });
         this.cart = cart;
         this.cartQty = Object.keys({ ...cart }).reduce((sum, next) => cart[next] ? sum + cart[next].qty : 0, 0)
+        console.log(this.cartQty)
         this.grossTotal = Object.keys({ ...cart }).reduce((sum, next) => cart[next] ? sum + cart[next].discounted : 0, 0);
         this.undiscounted = Object.keys({ ...cart }).reduce((sum, next) => cart[next] ? sum + cart[next].undiscounted : 0, 0)
         let clone = Object.assign(Object.create(Object.getPrototypeOf(this)), this);

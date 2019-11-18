@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 const ProductRow = ({ name = "", price = 0, code = "", imgUrl = "", imgXlUrl = "" }) => {
     const { state, modal: { setOpen = () => { }, setData = () => { } } } = useContext(Context);
-    let { scan, cart = {}, remove, addByQuantity } = state;
+    let { scan, cart = {}, remove, addByQuantity } = state;    
 
     const [qty, setQty] = useState(0);
     const productInCart = cart[code] ? cart[code] : {};
@@ -46,10 +46,10 @@ const ProductRow = ({ name = "", price = 0, code = "", imgUrl = "", imgXlUrl = "
     return (
         <li className="product row">
             <div className="col-product">
-                <figure className="product-image">
+                <figure className="product-image" onClick={handleModalClick} style={{cursor: "pointer"}}>
                     <img src={imgUrl} alt={code} />
                     <div className="product-description">
-                        <h1 onClick={handleModalClick}>{name}</h1>
+                        <h1 >{name}</h1>
                         <p className="product-code">Product code {code}</p>
                     </div>
                 </figure>
