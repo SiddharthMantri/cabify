@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "28e5e70b525cda88f562a75f453151e2",
+    "revision": "1514f839e684194eb880a3d20468ddbe",
     "url": "/cabify/index.html"
   },
   {
-    "revision": "fa10217b05aaaa86983d",
+    "revision": "ab295807c4f2f26ab87e",
     "url": "/cabify/static/css/main.ba9456da.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/cabify/static/js/2.b3b215c8.chunk.js"
   },
   {
-    "revision": "fa10217b05aaaa86983d",
-    "url": "/cabify/static/js/main.2732bf9e.chunk.js"
+    "revision": "ab295807c4f2f26ab87e",
+    "url": "/cabify/static/js/main.26a05447.chunk.js"
   },
   {
     "revision": "f6e64a3ba3f5c40371d7",
