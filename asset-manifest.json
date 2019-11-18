@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/cabify/static/css/main.ba9456da.chunk.css",
-    "main.js": "/cabify/static/js/main.c64f8f4f.chunk.js",
-    "main.js.map": "/cabify/static/js/main.c64f8f4f.chunk.js.map",
+    "main.js": "/cabify/static/js/main.2732bf9e.chunk.js",
+    "main.js.map": "/cabify/static/js/main.2732bf9e.chunk.js.map",
     "runtime-main.js": "/cabify/static/js/runtime-main.c93b9376.js",
     "runtime-main.js.map": "/cabify/static/js/runtime-main.c93b9376.js.map",
     "static/js/2.b3b215c8.chunk.js": "/cabify/static/js/2.b3b215c8.chunk.js",
     "static/js/2.b3b215c8.chunk.js.map": "/cabify/static/js/2.b3b215c8.chunk.js.map",
     "index.html": "/cabify/index.html",
-    "precache-manifest.ef5c428c278076f0f938e174ca794e5d.js": "/cabify/precache-manifest.ef5c428c278076f0f938e174ca794e5d.js",
+    "precache-manifest.3af393aeeab754921083d7876be230cb.js": "/cabify/precache-manifest.3af393aeeab754921083d7876be230cb.js",
     "service-worker.js": "/cabify/service-worker.js",
     "static/css/main.ba9456da.chunk.css.map": "/cabify/static/css/main.ba9456da.chunk.css.map"
   },
@@ -16,6 +16,6 @@
     "static/js/runtime-main.c93b9376.js",
     "static/js/2.b3b215c8.chunk.js",
     "static/css/main.ba9456da.chunk.css",
-    "static/js/main.c64f8f4f.chunk.js"
+    "static/js/main.2732bf9e.chunk.js"
   ]
 }
