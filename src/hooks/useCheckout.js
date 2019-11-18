@@ -11,7 +11,6 @@ export const useCheckout = (initData = {}) => {
         appliedRules = {},
         grossTotal = 0,
         scan = () => { },
-        total = () => { },
         updateCheckout = () => { },
         undiscounted,
         addByQuantity,
