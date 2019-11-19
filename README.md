@@ -55,3 +55,8 @@ The src folder also contains `__tests__` which contain some simple tests to make
 
 ### Future improvements
 - I would not implement business logic on the front end. If this was a full stack challenge, I would have implemented a simple server that has the Checkout APIs that would be consumed by the UI.
+
+
+### Codesandbox
+
+I used Codesandbox to test the initial implementation of hooks - https://codesandbox.io/s/elastic-hofstaedter-2qtde and https://codesandbox.io/s/laughing-monad-3gtxx
