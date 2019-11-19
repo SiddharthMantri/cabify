@@ -40,18 +40,18 @@ The src folder also contains `__tests__` which contain some simple tests to make
   - This has been demonstrated in the `__tests__` folder under checkout.test.js
 
 
-
-
 ### Development choices
 
 - I have specifically not re-written any of the html provided in the oiriginal problem.
 - In the interest of time, I have broken the existing code into its components instead of rewriting from scratch.
 - I have not rewritten the css either. I have added some classes that are used by the app but haven't done anything special otherwise.
 - `Modular CSS` was an option that I considered but I have discarded it in interest of time and reduction of complexity. That being said, if the project was sufficiently large, I'd have broken the CSS into modules and used them only in the components required. 
-- I have used a simple Eslint configuration for code linting that has helped me in the past. I considered various style guides and settled on `babel-eslint` although I could've used `airbnb-base` as well. 
-- I have specifically not used `redux` or `react-redux` in this application. I feel that by writing my own state hooks and provider, i've reduced the size of the application compared to if I'd have used `redux`.
-- I have stuck to jest as a testing library. I would have liked to use an integration testing suite such as cypress as well. 
+- Used a simple Eslint configuration for code linting that has helped me in the past. I considered various style guides and settled on `babel-eslint` although I could've used `airbnb-base` as well. 
+- Specifically not used `redux` or `react-redux` in this application. I feel that by writing my own state hooks and provider, i've reduced the size of the application compared to if I'd have used `redux`.
+- Stuck to jest as a testing library. I would have liked to use an integration testing suite such as cypress as well. 
+- Limited item quantity to 999. Replicating something i've seen in online stores that will prevent people from ordering unnaturally large amounts of an item.
+
 
 
 ### Future improvements
-- I would not have business logic on the front end. If this was a full stack challenge, I would have implemented a simple server that has the Checkout APIs that would be consumed by the UI.
+- I would not implement business logic on the front end. If this was a full stack challenge, I would have implemented a simple server that has the Checkout APIs that would be consumed by the UI.
