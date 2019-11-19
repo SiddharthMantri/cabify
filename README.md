@@ -51,5 +51,5 @@ The src folder also contains `__tests__` which contain some simple tests to make
 - I have stuck to jest as a testing library. I would have liked to use an integration testing suite such as cypress as well. 
 
 
-
-
+### Future improvements
+- I would not have business logic on the front end. If this was a full stack challenge, I would have implemented a simple server that has the Checkout APIs that would be consumed by the UI.
