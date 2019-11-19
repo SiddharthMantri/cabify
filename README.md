@@ -21,7 +21,7 @@ $ npm start
 This will open a browser at localhost:3000/
 
 ### ReactJS
-I decided to use React given that the exiting markup for the page was easily decomposable into its components and React best support the declarative way of writing HTML using JSX. 
+I decided to use React given that the exiting markup for the page was easily decomposable into its components and React best supports the declarative way of writing HTML using JSX. 
 
 ### File Structure
 The `src` folder is composed of 4 main parts of the app - Components, Hooks, Models and State. 
@@ -38,6 +38,8 @@ The src folder also contains `__tests__` which contain some simple tests to make
 - Have a Checkout class, that can be instantiated with products and discounts available. Allow adding products to the checkout with the scan method, passing the product ID as string in his first argument. Allow calculating the total price with the total method, which won't accept any arguments and will return the total price (discount already applied) as number
   - Checkout.js can be instantiated with pricingRules and products
   - This has been demonstrated in the `__tests__` folder under checkout.test.js
+
+
 
 
 ### Development choices

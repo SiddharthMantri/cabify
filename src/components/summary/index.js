@@ -1,11 +1,10 @@
 import React, { useContext, Fragment } from 'react';
 import { Context } from '../../store/context';
-import ItemList from './item-list';
 import DiscountList from './discount-list';
 
 const Summary = () => {
     const { state } = useContext(Context);
-    let { cart = {}, undiscounted = 0, grossTotal = 0, appliedRules = {}, cartQty = 0 } = state;
+    let { undiscounted = 0, grossTotal = 0, appliedRules = {}, cartQty = 0 } = state;
 
     return (
         <aside className="summary">
@@ -16,7 +15,7 @@ const Summary = () => {
                     <span className="summary-items-price">{undiscounted}<span className="currency">€</span></span>
                 </li>
             </ul>
-            <div className="summary-discounts wrapper-half" style={{ minHeight: "135px" }}>
+            <div className="summary-discounts wrapper-half">
                 {Object.keys(appliedRules).length > 0 &&
                     <Fragment>
                         <h2>Discounts</h2>
@@ -29,7 +28,7 @@ const Summary = () => {
             <div className="summary-total wrapper">
                 <h1 className="summary-total-cost">
                     <span>Total Cost</span>
-                    <span className="summary-total-price">{grossTotal}€</span>
+                    <span className="summary-total-price">{grossTotal} €</span>
                 </h1>
                 <button type="submit">Checkout</button>
             </div>
