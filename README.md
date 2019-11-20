@@ -1,6 +1,11 @@
 # Cabify Coding Challenge
 
-#### Technologies Used
+#### Note
+
+I have used a private repository on github for Source Control. Please let me know if you'd like to view it: https://github.com/SiddharthMantri/cabify
+
+
+### Technologies Used
 
 The main libraries powering the UI:
   - React - 16.11.0
@@ -59,4 +64,4 @@ The src folder also contains `__tests__` which contain some simple tests to make
 
 ### Codesandbox
 
-I used Codesandbox to test the initial implementation of my custom hook - https://codesandbox.io/s/elastic-hofstaedter-2qtde and https://codesandbox.io/s/laughing-monad-3gtxx
+I used Codesandbox to test the initial implementation of my custom hook, in case you'd like to view that as well - https://codesandbox.io/s/elastic-hofstaedter-2qtde and https://codesandbox.io/s/laughing-monad-3gtxx
