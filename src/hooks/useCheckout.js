@@ -1,6 +1,10 @@
 import { useState } from "react";
 import Checkout from "../models/Checkout";
 
+/**
+ * Custom hook that initializes the store with the cart and provides access to it's state
+ * @param {} initData {pricingRules= =[], products=[]}
+ */
 export const useCheckout = (initData = {}) => {
     /**
      * Initializes the Checkout class with initial data of pricingRules and products
