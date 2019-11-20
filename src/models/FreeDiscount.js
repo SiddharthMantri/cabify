@@ -1,5 +1,5 @@
 class FreeDiscount {
-	constructor(code, quantity) {
+	constructor(code = "", quantity = 0) {
 		this.code = code;
 		this.quantity = quantity;
 		this.name = `${this.quantity}x1 Free`;
@@ -31,7 +31,7 @@ class FreeDiscount {
 				discounted,
 				savings
 			};
-		}else if(productsToCheck && qty <= this.quantity){
+		} else if (productsToCheck && qty <= this.quantity) {
 			delete appliedRules[this.name];
 		}
 	}

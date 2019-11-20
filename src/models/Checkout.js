@@ -1,5 +1,5 @@
 class Checkout {
-    constructor(initData) {
+    constructor(initData = { pricingRules: [], products: [] }) {
         let { pricingRules = [], products = [] } = initData;
         this.cart = {};
         this.products = [...products];
